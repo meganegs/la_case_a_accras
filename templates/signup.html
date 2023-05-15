@@ -12,7 +12,7 @@
     </div>
   {% endfor %}
 
-  <h3 data-aos="fake-up text-dark">Sign-up</h3>
+  <h3 data-aos="fake-up text-dark">Créez votre compte</h3>
   <form action="/auth/login/" method="post">
     {% csrf_token %}
    <br/>
@@ -29,8 +29,8 @@
     <input type="password" class="form-control" id="pass2" name="pass2" required >
    </div>
    <br>
-   <button type="submit" class="btn btn-dark">SignIn</button>
-    Déjà utilisateur? <a href="/auth/login/">Login</a>
+   <button type="submit" class="btn btn-dark">Je m'inscris</button>
+    Déjà utilisateur? <a href="/auth/login/">Je me connecte</a>
    <br />
    <br>
   </form>

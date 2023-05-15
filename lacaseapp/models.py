@@ -40,7 +40,7 @@ class Login(models.Model):
     prenoms = models.CharField(max_length=200, db_index=True)
     email = models.CharField(max_length=200, db_index=True)
 
-# Create your models here.
+#Models category produits.
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.CharField(max_length=200, unique=True)
@@ -83,7 +83,6 @@ class Product(models.Model):
         #return reverse('product', kwargs={"slug" : self.slug})
         return reverse('product', args=[self.id, self.slug])
 
-
 class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
     items_json = models.CharField(max_length=5000)
@@ -102,8 +101,6 @@ class Orders(models.Model):
     def __str__(self):
         return self.name
     
-
-
 class OrderUpdate(models.Model):
     update_id = models.AutoField(primary_key=True)
     order_id = models.IntegerField(default="")

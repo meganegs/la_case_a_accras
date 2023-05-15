@@ -12,7 +12,7 @@
     </div>
   {% endfor %}
 
-  <h3 data-aos="fake-up text-dark">Login</h3>
+  <h3 data-aos="fake-up text-dark">Connectez-vous avec votre adresse e-mail</h3>
   <form action="/auth/login/" method="post">
     {% csrf_token %}
    <br/>
@@ -26,11 +26,10 @@
    </div>
   
    <br/>
-   <button type="submit" class="btn btn-dark">Login</button>
+   <button type="submit" class="btn btn-dark">Je me connecte</button>
+  
    <br/>
-   Nouvel utilisateur? <a href="/signup">Signup</a>
-   <br/>
-
+   <button type="button" class="btn button-medium"><div>Mot de passe oublié&nbsp;?</div></button>
   </form>
 </div>
 {% endblock %}

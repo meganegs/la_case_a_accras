@@ -3,59 +3,43 @@
 <html lang="fr">
   <head>
     <script type="text/javascript" src="static/js/cookie/tarteaucitron.js"></script>
-    <!--<script type="text/javascript" >
+    <script type="text/javascript" >
       tarteaucitron.init({
-        privacyUrl: "" /* Privacy policy url */,
+        privacyUrl: "/rgpd" /* Privacy policy url */,
         bodyPosition:
           "bottom" /* or top to bring it as first element for accessibility */,
-
         hashtag: "#tarteaucitron" /* Open the panel with this hashtag */,
         cookieName: "tarteaucitron" /* Cookie name */,
-
         orientation: "middle" /* Banner position (top - bottom) */,
-
         groupServices: false /* Group services by category */,
         serviceDefaultState: "wait" /* Default state (true - wait - false) */,
-
         showAlertSmall: false /* Show the small banner on bottom right */,
         cookieslist: false /* Show the cookie list */,
-
         closePopup: false /* Show a close X on the banner */,
-
         showIcon: true /* Show cookie icon to manage cookies */,
-        //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+        "iconSrc": "{% static 'images/favicon.png' %}", /* Optionnal: URL or base64 encoded image */
         iconPosition:
           "BottomRight" /* BottomRight, BottomLeft, TopRight and TopLeft */,
-
         adblocker: false /* Show a Warning if an adblocker is detected */,
-
         DenyAllCta: true /* Show the deny all button */,
         AcceptAllCta: true /* Show the accept all button when highPrivacy on */,
         highPrivacy: true /* HIGHLY RECOMMANDED Disable auto consent */,
-
         handleBrowserDNTRequest: false /* If Do Not Track == 1, disallow all */,
-
         removeCredit: false /* Remove credit link */,
         moreInfoLink: true /* Show more info link */,
-
         useExternalCss: false /* If false, the tarteaucitron.css file will be loaded */,
         useExternalJs: false /* If false, the tarteaucitron.js file will be loaded */,
-
         //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
-
         readmoreLink: "" /* Change the default readmore link */,
-
         mandatory: true /* Show a message about mandatory cookies */,
         mandatoryCta: true /* Show the disabled accept button when mandatory on */,  
       });
-
       tarteaucitron.user.gtagUa = 'G-KXS05KHV5V';
       // tarteaucitron.user.gtagCrossdomain = ['example.com', 'example2.com'];
       tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
       (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
       (tarteaucitron.job = tarteaucitron.job || []).push('instagram');
-
-    </script>-->
+    </script>
     
     <title>{% block title %} La case à accras {% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
@@ -115,7 +99,7 @@
                 >
                   <span class="icon-phone2"></span>
                 </div>
-                <span class="text">00 00 00 00 00</span>
+                <span class="text">0690 </span>
               </div>
               <div class="col-md pr-4 d-flex topper align-items-center">
                 <div
@@ -152,9 +136,15 @@
         
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="/" class="nav-link">Accueil</a>
-            </li>
+            
+              <li class="nav-item dropdown" >
+                <a href="/" class="nav-link dropdown-toggle">Accueil</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a href="/A-propos" class="dropdown-item">A-propos</a>
+                  <a href="/blog" class="dropdown-item">Blog</a>
+                  <a href="/contact" class="dropdown-item">Contact</a>
+                </div>
+              </li>
             
             <!--<li class="nav-item dropdown" >
               <a href="/"class="nav-link dropdown-toggle"
@@ -176,26 +166,41 @@
                   <a href="/corbeilles" class="dropdown-item">Corbeilles</a>
                 </div>
               </li>
+              <li class="nav-item dropdown cta cta-colored">
+                <!--<button type="button" class="nav-link scrollo btn-primary p-3 m-2 text-white" id="poppanier" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
+                  Panier (<span id="panier" >0</span>)
+                </button>-->
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdown04"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  ><span class="icon-shopping_cart"></span></a
+                >
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="/rgpd">Politique de confidentialité</a>
+                  <a class="dropdown-item" href="/mentionLegale">Mention légale</a>
+                  <a class="dropdown-item" href="/">Détail produits</a>
+                </div>
+              </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item ">
-            <a href="/auth/logout" class="nav-link scrollto">Déconnexion
-              {{user.username}}
-            </a>
+              <a href="/auth/logout" class="nav-link scrollto">Déconnexion
+                {{user.username}}
+              </a>
             </li>
             {% else %}
             
 
-            <li class="nav-item dropdown" >
-              <a href="/auth/signup"class="nav-link dropdown-toggle"
-              id="dropdown04"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"> S'inscrire</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <li class="nav-item" >
+              <a href="/auth/signup"class="nav-link "> S'identifier </a>
+              <!--<div class="dropdown-menu" aria-labelledby="dropdown04">
                 <a href="/auth/signup" class="dropdown-item">S'inscrire</a>
                 
                 <a href="/auth/login" class="dropdown-item">Se connecter</a>
-              </div>
+              </div>-->
             </li>
             {% endif %}
 
@@ -242,28 +247,9 @@
             </li>-->
           
 
-            <li class="nav-item dropdown cta cta-colored">
-              <button type="button" class="nav-link scrollo btn-primary p-3 m-2 text-white" id="poppanier" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
-                Panier (<span id="panier" >0</span>)
-              </button>
-              <!--<a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="dropdown04"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                ><span class="icon-shopping_cart"></span>[0]</a
-              >
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="/panier">Votre panier</a>
-                <a class="dropdown-item" href="/checkout">Commander</a>
-              </div>-->
-            </li>
             
-            <li class="nav-item">
-              <a href="/contact" class="nav-link">Contact</a>
-            </li>
+            
+            
           </ul>
         </div>
         {% endblock %}
