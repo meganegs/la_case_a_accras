@@ -14,7 +14,7 @@ from pathlib import Path
 from django.contrib import messages
 import os
 import lacaseaaccras
-import dj_database_url
+#import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://lacaseaaccras.herokuapp.com/', "localhost"]
 
 
 # Application definition
@@ -91,7 +91,19 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 #    }
 #}
 DATABASES = {
-    'default': dj_database_url.config()
+     'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'some-mysql',  
+        'USER': 'root',  
+        'PASSWORD': 'my-secret-pw',  
+        'HOST': 'some-mysql',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
+    }  
+
+#    'default': dj_database_url.config()
 }
 
 # Password validation
