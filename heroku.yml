@@ -1,6 +1,6 @@
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile.heroku
 run:
   web: bundle exec puma -C config/puma.rb
 
@@ -8,3 +8,4 @@ setup:
   addons:
   - plan: heroku-postgresql
     as: DATABASE
+  build:
