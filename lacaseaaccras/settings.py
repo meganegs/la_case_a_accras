@@ -15,8 +15,6 @@ from django.contrib import messages
 import os
 #import lacaseaaccras
 import dj_database_url
-import django_heroku
-django_heroku.settings(locals())
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +30,7 @@ SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lacaseaaccras.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -100,10 +98,10 @@ DATABASE_URL = 'postgresql://<postgresql>'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'root', 
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1', 
+        'NAME': 'd916snbe94022n', 
+        'USER': 'cwojbwbcpunawi',
+        'PASSWORD': '5e942d8b4f06dad5ab71a6f02bfdd0d7d414851de84452fc6537d8533d386f0a',
+        'HOST': 'ec2-3-210-173-88.compute-1.amazonaws.com', 
         'PORT': '5432',
     }
 }
