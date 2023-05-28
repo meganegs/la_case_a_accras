@@ -15,10 +15,9 @@ from django.contrib import messages
 import os
 #import lacaseaaccras
 import dj_database_url
+import django_heroku
+django_heroku.settings(locals())
 
-import environ
-env = environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,15 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np'
-...
-# Your secret key
-SECRET_KEY = env("SECRET_KEY")
-...
+SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.155.183.85']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -99,26 +95,14 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 #
 #DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-#DATABASE_URL = 'postgresql://<postgresql>'
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
-}
+DATABASE_URL = 'postgresql://<postgresql>'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'your_db_name', 
+        'NAME': 'root', 
         'USER': 'postgres',
-        'PASSWORD': 'your_db_password',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
