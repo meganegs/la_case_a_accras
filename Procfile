@@ -1,1 +1,1 @@
-web: gunicorn lacaseaaccras.wsgi:application --log-file -
+web: gunicorn lacaseaaccras.wsgi

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "postgresql": "^0.0.1",
     "tarteaucitronjs": "^1.11.0"
   }
 }
