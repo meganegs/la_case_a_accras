@@ -93,15 +93,15 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 #
 #DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-DATABASE_URL = 'postgresql://<postgresql>'
+#DATABASE_URL = 'postgresql://<postgresql>'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3e92rui3n5dni', 
-        'USER': 'u68nid02lb7r9f',
-        'PASSWORD': 'pb78ae537ddb2c1b1cd7130f2c9f32ac41cc91c18a0d095555e48c9532edbc22b',
-        'HOST': 'ec2-18-202-5-111.eu-west-1.compute.amazonaws.com', 
+        'NAME': 'd1d3e7rk31iqok', 
+        'USER': 'us357f49vbmm9',
+        'PASSWORD': 'p21d94213d16df26f9fd80065a422aec307219bcdab1b6eaf068ce620fb74aa43',
+        'HOST': 'ec2-54-78-149-86.eu-west-1.compute.amazonaws.com', 
         'PORT': '5432',
     }
 }
