@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from django.contrib import messages
 import os
-#import lacaseaaccras
+import lacaseaaccras
 import dj_database_url
 
 
@@ -98,10 +98,10 @@ DATABASE_URL = 'postgresql://<postgresql>'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd916snbe94022n', 
-        'USER': 'cwojbwbcpunawi',
-        'PASSWORD': '5e942d8b4f06dad5ab71a6f02bfdd0d7d414851de84452fc6537d8533d386f0a',
-        'HOST': 'ec2-3-210-173-88.compute-1.amazonaws.com', 
+        'NAME': 'd3e92rui3n5dni', 
+        'USER': 'u68nid02lb7r9f',
+        'PASSWORD': 'pb78ae537ddb2c1b1cd7130f2c9f32ac41cc91c18a0d095555e48c9532edbc22b',
+        'HOST': 'ec2-18-202-5-111.eu-west-1.compute.amazonaws.com', 
         'PORT': '5432',
     }
 }
