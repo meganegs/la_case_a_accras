@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'ENGINE':'django.db.backends.postgresql',
         'NAME':'d5snatdfn6u8cd', 
         'USER':'u5m85b84qnh0cm',
         'PASSWORD':'paffb4a749249bf98642a54775aae9db4b7aa9c3bb1e081939fbcba322de6da05',
