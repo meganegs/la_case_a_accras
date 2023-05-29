@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lacaseaaccras.herokuapp.com']
+ALLOWED_HOSTS = ['lacaseaaccras.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -97,12 +97,12 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5unra9f716r3a', 
-        'USER': 'u22unluhfimr75',
-        'PASSWORD': 'pf6549ee2e24c38c7278a04c919065dd031336b8b404042a1f59b72557e1a2337',
-        'HOST': 'ec2-99-81-96-181.eu-west-1.compute.amazonaws.com', 
-        'PORT': '5432',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'d5snatdfn6u8cd', 
+        'USER':'u5m85b84qnh0cm',
+        'PASSWORD':'paffb4a749249bf98642a54775aae9db4b7aa9c3bb1e081939fbcba322de6da05',
+        'HOST':'ec2-52-31-11-172.eu-west-1.compute.amazonaws.com', 
+        'PORT':'5432',
     }
 }
 
