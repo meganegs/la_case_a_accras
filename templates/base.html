@@ -17,7 +17,7 @@
         cookieslist: false /* Show the cookie list */,
         closePopup: false /* Show a close X on the banner */,
         showIcon: true /* Show cookie icon to manage cookies */,
-        "iconSrc": "", /* Optionnal: URL or base64 encoded image */
+        "iconSrc": "{% static 'images/favicon.png' %}", /* Optionnal: URL or base64 encoded image */
         iconPosition:
           "BottomRight" /* BottomRight, BottomLeft, TopRight and TopLeft */,
         adblocker: false /* Show a Warning if an adblocker is detected */,
@@ -42,7 +42,7 @@
     </script>
     
     <title>{% block title %} La case à accras {% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
@@ -138,7 +138,7 @@
           <ul class="navbar-nav ml-auto">
             
               <li class="nav-item dropdown" >
-                <a href="" class="nav-link dropdown-toggle">Accueil</a>
+                <a href="/" class="nav-link dropdown-toggle">Accueil</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a href="/A-propos" class="dropdown-item">A-propos</a>
                   <a href="/blog" class="dropdown-item">Blog</a>
