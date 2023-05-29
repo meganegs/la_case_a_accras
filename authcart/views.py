@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-#from .utils import TokenGenerator, generate_token
+from .utils import TokenGenerator, generate_token
 from django.utils.encoding import force_bytes,force_str, DjangoUnicodeDecodeError
 from django.core.mail import EmailMessage
 from django.conf import settings
@@ -37,7 +37,7 @@ def signup(request):
                 'user' : user,
                 'domain':'127.0.0.1:3000',
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                #'token': generate_token.make_token(user)
+                'token': generate_token.make_token(user)
             })
 
             email_message = EmailMessage(email_subject,message,settings.EMAIL_HOST_USER,[email])
