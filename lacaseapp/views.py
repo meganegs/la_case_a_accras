@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from lacaseapp.models import Contact, Product, OrderUpdate, Orders
+from lacaseapp.models import Contact, Product, OrderUpdate, Orders, Article
 from django.contrib import messages
 from math import ceil
 from lacaseapp import keys
@@ -11,8 +11,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def index(request):
-
     return render(request, "index.html")
+
+def blog(request):
+    return render(request, "blog.html")
 
 
 def fruits(request):

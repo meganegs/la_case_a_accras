@@ -2,78 +2,82 @@
 {% block title %} Légumes {% endblock %} 
 {% block body%}
 
-{% endblock %}
 {% load static %}
 
+    
+<div class="hero-wrap hero-bread" style="background-image: url('static/images/category-3.jpg');"></div>
+    <div class="container">
+        {% for product, range, nSlides in legumes %}  
 
-{% block section %}
+        <div class="row no-gutters slider-text">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">Accueil</a></span> <span>/{{product.0.category}}</span></p>
+        </div>
+        <div class="col-md ftco-animate">
+            <h1 class="mb-0 bread">{{product.0.category}}</h1>
+            <h3 class="mb-0 "> Sélection de {{product.0.category}} de saison </h3>
+           
+            <p>Votre primeur « La case à accras » au Gosier a sélectionné pour vous les meilleurs légumes de saison.</p> 
+            <p>Votre maraîcher privilégie les légumes de production française afin de vous assurer de trouver des produits de qualité toute l'année ! Peu importe la saison, vous trouverez des légumes divers et variés pour cuisiner toutes vos envies : soupes, miguan, gratins, ragoût, etc... </p>
+            <p>Les étals de votre primeur regorgent également de nombreuses plantes aromatiques qui vous permettront d'apporter différentes saveurs à vos plats cuisinés (menthe, laurier, thym, café, etc...). </p>
+        </div>
+            
+        <section class="ftco-section">
+            <div class="row">        
+                        {% for i in product %}            
+                            <div class="col-md-6 col-lg-3 ftco-animate">
+                                <div class="product">
+                                    <img class="img-fluid" src="/media/{{i.image}}" alt="not found" height="auto" width="300px">
+                                        <!--<span class="status">30%</span>-->
+                                        <!--<div class="overlay"></div>-->
+                                        <div class="card-body">
+                                            <h3 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h3>
+                                            <p class="card-text">{{i.desc|slice:"0:12"}}...</p>
+                                            <h6 class="card-title" >Prix: <span id="pricepr{{i.id}}">{{i.price}}</span></h6>
 
-{% for product, range, nSlides in legumes %}  
-<div class="hero-wrap hero-bread" style="background-image: url('static/images/image_5.jpg');"></div>
-  <div class="container">
-          <div class="row no-gutters slider-text">
-              <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil</a></span> <span>/ {{product.0.category}}</span></p>
-          </div>
-          <div class="col-md ftco-animate">
-            <h1 class="mb-0 bread">Légumes</h1>
-            <h3 class="mb-0 "> Sélection de fruits de saison </h3>
-              <p>Votre primeur « La case à accras » au Gosier a sélectionné pour vous les meilleurs légumes de saison.</p> 
-              <p>Votre maraîcher privilégie les légumes de production française afin de vous assurer de trouver des produits de qualité toute l'année ! Peu importe la saison, vous trouverez des légumes divers et variés pour cuisiner toutes vos envies : soupes, miguan, gratins, ragoût, etc... </p>
-              <p>Les étals de votre primeur regorgent également de nombreuses plantes aromatiques qui vous permettront d'apporter différentes saveurs à vos plats cuisinés (menthe, laurier, thym, café, etc...). </p>
-          </div>  
-        <section class="ftco-section">        
-            <div class="row">
-              {% for i in product %} 
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="/media/{{i.image}}" alt="Colorlib Template">
-                            <span class="status">30%</span>
-                            <div class="overlay"></div>
-                        </a>
-                        <div class="text py-3 pb-4 px-3 text-center">
-                            <h3><a href="#">{{i.product_name}}</a></h3>
-                            <div class="d-flex">
-                                <div class="pricing">
-                                    <p class="price"><span class="mr-2 price-dc{{i.id}}">$120.00</span><span class="price-sale">{{i.price}}</span></p>
+                                                <span  id="pricepr{{i.id}}"></span>                                                
+                                        
+                                                <span id="divpr{{i.id}}" class="divpr">
+                                                    <button id="pr{{i.id}}" class=" btn btn-danger panier btn-sm mt-0">
+                                                    ajouter a panier
+                                                    </button>
+                                                </span>
+                                        </div>
+                                    </img>
+                                    
                                 </div>
+                            
                             </div>
-                            <div class="bottom-area d-flex px-3">
-                                <div class="m-auto d-flex">
-                                    <a href="/media/{{i.image}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                        <span><i class="ion-ios-menu"></i></span>
-                                    </a>
-                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                        <span><i class="ion-ios-cart"></i></span>
-                                    </a>
-                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                        <span><i class="ion-ios-heart"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>           
-              {% endfor %}
-
-            </div>
+                           
+                        {% endfor %}
+            </div>    
             <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
             </div>
         </section>
-  </div>
+        {% endfor %}
+
+    </div>
+
 </div>
-{% endfor %}
+
+
 
 {% endblock %}
+
+
+
+
+    
+
