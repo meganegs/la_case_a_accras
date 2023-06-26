@@ -19,14 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    #Backend
     path('admin/', admin.site.urls),
-    #path('admin/', include("customadmin.urls")),
-    path('dashboard/', include("lacaseapp.urls")),
-
-
     path('', include("lacaseapp.urls") ),
-    path('register/', include("lacaseapp.urls") ),
-    
+    path('auth/', include("authcart.urls") )
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

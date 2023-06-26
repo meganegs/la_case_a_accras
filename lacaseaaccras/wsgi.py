@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lacaseaaccras.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LA_CASE_A_ACCRAS.settings')
 
 application = get_wsgi_application()
