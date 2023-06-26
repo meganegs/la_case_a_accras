@@ -1,0 +1,160 @@
+{% extends 'shop/base.html' %} 
+
+{% block title %} Fruits {% endblock %} 
+
+{% block content %} 
+<div class="hero-wrap hero-bread" style="background-image: url('static/images/image_5.jpg');"></div>
+
+<div class="container">
+    <div class="row">
+    
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="row no-gutters slider-text">
+
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Accueil</a></span> <span>/ {{product.category}}</span></p>
+                </div>
+                <div class="col-md ftco-animate">
+                    <h1 class="mb-0 bread">{{product.category }}</h1>
+                    <h3 class="mb-0 "> Sélection de {{product.category}}s de saison </h3>
+                    <p>Découvrez la sélection de fruits faite par votre primeur « La case à accras » aux Gosier. Soucieux de la qualité des produits qu'il propose à sa clientèle, votre maraîcher privilégie les fruits de saison et issus de la production Guadeloupéenne.</p> 
+                    <p>A La case à accras vous trouverez toutes sortes de fruits vendus à la pièce ou par lot de 125g à 500g : bananes, fruits-à-pain, avocat, mangues, etc... Il y en a pour tous les goûts ! Votre primeur La case à accras vous souhaite une bonne dégustation de produits frais.</p>
+                </div> 
+            </div> 
+        </div> 
+        
+
+    </div> 
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-align-items-center">
+                    <div class="col">
+                        <input type="search" placeholder="Entrez le nom du produit souhaiter" name="item-name" class="form-control form-control-borderless"/>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Recherche</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    
+
+        <div class="row">
+        {% for product in product_object %}
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{ product.image }}" width="50%" height="50%" alt="" class="card-img-top">
+                <div class="card-body">
+                    <div id="aa{{product.id}}" class="card-title">
+                        {{ product.title }}
+                    </div>
+                    <div id="price{{product.id}}" style="color: blue" class="card-text">
+                        {{ product.price }} euros
+                    </div>
+                    <a href="{{product.id}}" class="btn btn-warning">Voir</a>
+                    <button id="{{ product.id }}" class="btn aj btn-success">Ajouter</button>
+                </div>
+            </div>
+        </div>
+                 
+        {% endfor %}
+       
+        </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-3 offset-md-4 text-center">
+            <ul class="pagination block-27">
+                {% if product_object.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{product_object.has_previous_page_number}}">Précédent</a>
+
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{product_object.number}}">{{product_object.number}}</a>
+
+                </li>
+
+                {% if product_object.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{product_object.has_next_page_number}}">Suivant</a>
+
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %} 
+<script type="text/javascript">
+    console.log('test');
+
+    var shopCart; // Déclaration de la variable shopCart
+
+    if (localStorage.getItem('shopCart') == null) {
+        shopCart = {};
+    } else {
+        shopCart = JSON.parse(localStorage.getItem('shopCart')); // Utilisation de JSON.parse pour convertir la chaîne en objet JavaScript
+        document.getElementById('shopCart').innerHTML = "Panier("+ Object.keys(shopCart).length + ")";
+    }
+
+    $(document).on('click', '.aj', function() {
+        console.log("ajouter");
+
+        var item_id = this.id.toString();
+
+        console.log(item_id);
+
+        if (shopCart[item_id] !== undefined) { // Remplacement de panierCart par shopCart
+            var quantite = shopCart[item_id][0] +1;
+            shopCart[item_id][0] = quantite;
+            shopCart[item_id][2] += parseFloat(document.getElementById("price"+item_id).innerHTML);
+        } else {
+            var quantite = 1;
+            var prix = parseFloat(document.getElementById("price"+item_id).innerHTML);
+            var nom = document.getElementById("aa"+item_id).innerHTML;
+            shopCart[item_id] = [quantite, nom, prix];
+        }
+
+        console.log(shopCart); // Remplacement de panier par shopCart
+
+        localStorage.setItem('shopCart', JSON.stringify(shopCart));
+        document.getElementById('shopCart').innerHTML = "Panier("+ Object.keys(shopCart).length + ")";
+        console.log(shopCart);
+    });
+
+    AfficherList(shopCart);
+
+    function AfficherList(shopCart) {
+        var panierString = " ";
+        panierString += "<h5>Voici votre liste</h5>";
+        var index = 1;
+
+        for (var x in shopCart) {
+            var element = document.getElementById("aa"+x);
+            if (element) {
+                panierString += index + ". ";
+                panierString += document.getElementById("aa"+x).innerHTML + " Qte: " + shopCart[x][0] + "</br>";
+                index += 1;
+            }
+        }
+
+        panierString += "<a href='/checkout' class='btn btn-primary'>Payer</a>";
+
+        $('[data-toggle="popover"]').popover();
+        document.getElementById('shopCart').setAttribute('data-content', panierString);
+    }
+</script>
+
+{% endblock %}

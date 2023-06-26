@@ -20,7 +20,7 @@
   {% endfor %}
 
   <h3 data-aos="fake-up text-dark">Connectez-vous avec votre adresse e-mail</h3>
-  <form action="/auth/login/" method="post">
+  <form action="login" method="post">
     {% csrf_token %}
    <br/>
    <label for="username">Nom</label>

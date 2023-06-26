@@ -312,6 +312,10 @@
 	goHere();
 
 
+	function panier(){
+		console.log()
+	}
+
 	function makeTimer() {
 
 		var endTime = new Date("21 December 2019 9:56:00 GMT+01:00");			
