@@ -16,6 +16,9 @@ import os
 import lacaseaaccras
 import dj_database_url
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g1d7p6%3&vtu!fkg$b#2egavbe-i5gh*5v@+f)ltugh9r)&6np'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lacaseaaccras.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -43,7 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lacaseapp',
-    'authcart',
+    'customadmin',
+
+
+    #paiement intégration
+    
 ]
 
 MIDDLEWARE = [
@@ -55,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    
 
 ]
 
@@ -84,15 +92,54 @@ WSGI_APPLICATION = 'lacaseaaccras.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+#if ON_HEROKU:
+#    DATABASE_URL = 'postgresql://<postgresql>'
+#else:
+#    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+#
+#DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+
+#DATABASE_URL = 'postgresql://<postgresql>'
+
+DATABASES = {
+    'default': {
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'d5snatdfn6u8cd', 
+        'USER':'u5m85b84qnh0cm',
+        'PASSWORD':'paffb4a749249bf98642a54775aae9db4b7aa9c3bb1e081939fbcba322de6da05',
+        'HOST':'ec2-52-31-11-172.eu-west-1.compute.amazonaws.com', 
+        'PORT':'5432',
+    }
+}
+
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': BASE_DIR / 'postgresql_psycopg2',
 #    }
 #}
-DATABASES = {
-    'default': dj_database_url.config()
-}
+
+#DATABASES = {
+#     'default': {  
+#        'ENGINE': 'django.db.backends.mysql',  
+#        'NAME': 'some-mysql',  
+#        'USER': 'root',  
+#        'PASSWORD': 'my-secret-pw',  
+#        'HOST': 'some-mysql',  
+#        'PORT': '3306',  
+#        'OPTIONS': {  
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+#        }  
+#    }  
+#}
+
+#DATABASES = {
+#    'default': dj_database_url.config()
+#
+#}
+#DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -113,10 +160,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -145,6 +193,8 @@ STATICFILES_DIRS=[
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+AUTH_USER_MODEL = 'customadmin.Shopper'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -155,4 +205,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MESSAGE_TAGS = {
     messages.ERROR:'danger'
+}
+
+
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework.authentication.BasicAuthentication',
+   )
 }

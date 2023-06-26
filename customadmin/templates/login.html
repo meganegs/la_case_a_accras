@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+<div class="card bg-light p-5">
+  {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fabe show" role="alert">
+        <strong>{{message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close">X</button>
+    </div>
+  {% endfor %}
+
+  <h3 data-aos="fake-up text-dark">Connectez-vous avec votre adresse e-mail</h3>
+  <form action="login" method="post">
+    {% csrf_token %}
+   <br/>
+   <label for="username">Nom</label>
+   <div class="form-group">
+    <input type="text" class="form-control" id="username" name="username" required >
+   </div>
+
+   <label for="password">Mot de passe</label>
+   <div class="form-group">
+    <input type="password" class="form-control" id="password" name="password" required >
+   </div>
+  
+   <br/>
+
+    <div class="form-group">
+        <input type="checkbox" id="remem">
+        <label for="remem">Se rappeler de moi?</label>
+    </div>
+
+   <br/>
+   <button type="submit" class="btn button-medium"></button>
+  </form>
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
+</body>
+</html>
