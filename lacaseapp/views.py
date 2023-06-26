@@ -69,15 +69,15 @@ def fruits(request):
     return render(request, "shop/fruits.html",  {'product_object' : product_object})
 
 def legumes(request):  
-    product_object = Product.objects.filter(category_id = 7)
-    for e in product_object:
+    product_objects = Product.objects.filter(category_id = 7)
+    for e in product_objects:
         print(e.category_id)
 
-    print(product_object)
-    paginator = Paginator(product_object, 4)
+    print(product_objects)
+    paginator = Paginator(product_objects, 4)
     page = request.GET.get('page')
     product_object = paginator.get_page(page)
-    return render(request, "shop/legumes.html",  {'product_object' : product_object})
+    return render(request, "shop/legumes.html",  {'product_objects' : product_objects})
 
 
 def contact(request):

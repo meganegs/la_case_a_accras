@@ -47,9 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lacaseapp',
     'customadmin',
-
-
-    #paiement intégration
     
 ]
 
